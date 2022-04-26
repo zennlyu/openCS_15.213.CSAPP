@@ -122,19 +122,33 @@ Example usages:
 
     unix> ./ishow 0x27
     Hex = 0x00000027,	Signed = 39,	Unsigned = 39
-
+    
     unix> ./ishow 27
     Hex = 0x0000001b,	Signed = 27,	Unsigned = 27
-
+    
     unix> ./fshow 0x15213243
     Floating point value 3.255334057e-26
     Bit Representation 0x15213243, sign = 0, exponent = 0x2a, fraction = 0x213243
     Normalized.  +1.2593463659 X 2^(-85)
-
+    
     linux> ./fshow 15213243
     Floating point value 2.131829405e-38
     Bit Representation 0x00e822bb, sign = 0, exponent = 0x01, fraction = 0x6822bb
     Normalized.  +1.8135598898 X 2^(-126)
 
-
+| 名称                | 描述                         | 难度 | 指令数目 |
+| ------------------- | ---------------------------- | ---- | -------- |
+| bitXor(x, y)        | 只使用 ~ 和 & 实现 ^         | 1    | 14       |
+| tmin()              | 返回最小补码                 | 1    | 4        |
+| isTmax(x)           | 判断是否是补码最大值         | 1    | 10       |
+| allOddBits(x)       | 判断补码所有奇数位是否都是 1 | 2    | 12       |
+| negate(x)           | 不使用负号 - 实现 -x         | 2    | 5        |
+| isAsciiDigit(x)     | 判断 x 是否是 ASCII 码       | 3    | 15       |
+| conditional(x,y,z)  | 类似于 `x?y:z`               | 3    | 16       |
+| isLessOrEqual(x, y) | x <= y                       | 3    | 24       |
+| logicalNeg(x)       | 计算 `!x` 而不用 `!` 运算符  | 4    | 12       |
+| howManyBits(x)      | 计算表达 x 所需的最少位数    | 4    | 90       |
+| floatScale2(uf)     | 计算 `2.0*uf`                | 4    | 30       |
+| floatFloat2Int(uf)  | 计算 `(int) f`               | 4    | 30       |
+| floatPower2(x)      | 计算 2.0^x                   | 4    | 30       |
 
