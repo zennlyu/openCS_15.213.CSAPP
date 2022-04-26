@@ -25,3 +25,19 @@ void show_float(float x) {
 void show_pointer(void *x) {
 	show_bytes((byte_pointer) &x, sizeof(void *));
 }
+
+void test_show_bytes(int val) {
+	int ival = val;
+	float fval = (float) ival;
+	int *pval = &ival;
+	show_int(ival);
+	show_float(fval);
+	show_pointer(pval);
+}
+
+int main(int argc, char const *argv[])
+{
+	const char *s = "abcdef";
+	show_bytes((byte_pointer) s, strlen(s));
+	return 0;
+}
