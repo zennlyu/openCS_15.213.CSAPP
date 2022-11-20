@@ -143,7 +143,8 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  return ~(~x&~y)&~(x&y);
+    // 直接推公式，^可以使用~、&和|表示，而|又可以用~和&表示
+    return ~(~x&~y)&~(x&y);
 }
 /* 
  * tmin - return minimum two's complement integer 
@@ -152,6 +153,11 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
+    /*
+     * 有符号数是用补码来表示的，Tmin表示最小补码数，
+     * 对于1个字节大小的补码，最小补码数形式为 10000000，
+     * C语言中 int 类型占4字节，即 32 位，所以对1左移31位来构造最小补码
+     */
   return 1<<31;
 }
 //2

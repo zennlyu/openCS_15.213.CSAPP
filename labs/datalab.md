@@ -1,50 +1,5 @@
-# Data Lab 笔记
-
-这一个 lab 主要涉及了位运算，补码和浮点数等内容。完成 lab 不仅要实现函数的功能，还要求仅用规定的操作符，操作符数目也在限定范围内，这一点比较坑，因为这样代码可读性不高，当然难度也大了。所有题目都限定在32位系统中。     
-题目列表在 [bits.c](../labs/data/bits.c) 中，完成解答可以用 lab 自带的 dlc 检查操作符是否合法，可以 `make btest` 检查解答是否正确，具体可以参见 [README](../labs/data/README)    
-参考资料：       
-[马天猫的CS学习之旅](https://zhuanlan.zhihu.com/deeplearningcat)
-
-## 1.位操作
-
-1.bitAnd
-
-```C
-/* 
- * bitAnd - x&y using only ~ and | 
- *   Example: bitAnd(6, 5) = 4
- *   Legal ops: ~ |
- *   Max ops: 8
- *   Rating: 1
- */
-int bitAnd(int x, int y) {
-  return ~((~x)|(~y));
-}
-```
-
-第一题要求只用非运算 ~ 和或运算 | 实现和 & 运算，可以使用
-[德摩根定律](https://zh.wikipedia.org/wiki/%E5%BE%B7%E6%91%A9%E6%A0%B9%E5%AE%9A%E5%BE%8B)       
-
-2.getByte
-
-```C
-/* 
- * getByte - Extract byte n from word x
- *   Bytes numbered from 0 (LSB) to 3 (MSB)
- *   Examples: getByte(0x12345678,1) = 0x56
- *   Legal ops: ! ~ & ^ | + << >>
- *   Max ops: 6
- *   Rating: 2
- */
-int getByte(int x, int n) {
-  int mask=0xff;
-  return (x>>(n<<3))&mask;
-}
-```
-
-第二题是从 x 中提取出第 i 个字节（i=0,1，2,3），方法就是将那个字节移位至最低位，然后用屏蔽码 `0xff` 提取就可以了；       
-
 3.logicalShift
+
 ```C
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
@@ -404,10 +359,3 @@ unsigned float_twice(unsigned uf) {
 这题计算浮点数的两倍，无穷大和 NaN 时直接返回，然后分规格化和非规格化两种讨论：    
 规格化的情况，阶码值直接加 1 ，但是有个特殊情况就是加一后阶码为 255 时，应返回无穷大；   
 非规格化的情况，排除符号位左移一位就可以了，因为这时阶码值为 0 ,两倍就相当于小数字段左移一位，不用担心溢出的情况，溢出时阶码值加 1,小数字段左移一位，相当于整体左移了。
-
-## 小结
-
-整个 lab 总体难度较大，我参考着 Google 花了一周的晚上才完成，真是太菜了。。还是要多学习，提高姿势水平。
-
-
- 
